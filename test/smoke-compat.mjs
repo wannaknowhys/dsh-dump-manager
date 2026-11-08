@@ -113,6 +113,21 @@ check('a missing writer does not warn', missing.warnings.length, 0);
 const missingOverview = await overview(missing.routes);
 check('overview reports an absent writer', missingOverview.body.compatibility.code, 'ABSENT');
 
+// A `link:` install resolves the module to its real path, outside the profile.
+// The check must then find the profile's copy by scanning, not by resolving a
+// sibling package from the module location.
+const profileDumps = join(home, 'profiles', 'demo', 'node_modules', 'dsh-llm-dump');
+mkdirSync(profileDumps, { recursive: true });
+writeFileSync(
+  join(profileDumps, 'package.json'),
+  JSON.stringify({ name: 'dsh-llm-dump', dsh: { formatVersion: 3 } }),
+);
+const linked = boot();
+check('a link install is found through the profile scan', linked.warnings.length, 1);
+check('the scanned warning names the version', linked.warnings[0].includes('format 3'), true);
+const linkedOverview = await overview(linked.routes);
+check('overview reports the scanned version', [linkedOverview.body.compatibility.code, linkedOverview.body.compatibility.found], ['NEWER', 3]);
+
 if (failures.length === 0) rmSync(home, { recursive: true, force: true });
 else console.error('kept ' + home);
 
