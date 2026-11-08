@@ -190,6 +190,10 @@ Runs on synthetic folded dumps in a throwaway `DSH_HOME` under the system temp
 directory; the real profile is never touched:
 
 - `tools/check-strings.mjs` — both string copies are in sync and complete.
+- `test/smoke-client.mjs` — loads the browser half with stub React and asserts
+  every contribution goes through `slots.inject` (a direct `register` at apply
+  time throws before the owning UI declares the slot) and that `locale` is
+  injected.
 - `test/smoke-compat.mjs` — the startup warning, the compatibility block in
   `/overview`, and the pure version comparison.
 - `test/smoke-latest.mjs` — newest-turn export: filters, fork refusal, prefs,

@@ -30,7 +30,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "test": "node tools/check-strings.mjs && node test/smoke-compat.mjs && node test/smoke-latest.mjs && node test/smoke-tail.mjs",
+    "test": "node tools/check-strings.mjs && node test/smoke-client.mjs && node test/smoke-compat.mjs && node test/smoke-latest.mjs && node test/smoke-tail.mjs",
     "sync-strings": "node tools/sync-strings.mjs"
   },
   "dsh": {

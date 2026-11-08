@@ -172,6 +172,9 @@ npm test
 profile：
 
 - `tools/check-strings.mjs` —— 两份字符串副本同步且完整。
+- `test/smoke-client.mjs` —— 用桩 React 加载浏览器半边，断言所有贡献都经
+  `slots.inject`（直接在 apply 时 `register` 会因槽位尚未声明而抛错），并确认
+  `locale` 已注入。
 - `test/smoke-compat.mjs` —— 启动警告、`/overview` 里的兼容信息，以及纯比较函数。
 - `test/smoke-latest.mjs` —— 导出本轮：筛选、fork 拒绝、偏好、抓取配置、目录
   根列表。
