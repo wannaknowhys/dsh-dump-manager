@@ -82,7 +82,7 @@ check('registrations', registrations.map((row) => row.name + '#' + row.id), [
   'settings.plugins.tab#dump-manager',
 ]);
 check('the settings label is localized lazily', typeof registrations[3].label, 'function');
-check('the settings label resolves', registrations[3].label(), 'LLM Dump Settings');
+check('the settings label follows the active locale', registrations[3].label(), 'LLM Dump 设置');
 
 const broken = {
   ...baseCtx,
