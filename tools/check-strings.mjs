@@ -18,8 +18,9 @@ check('every key is filled in both languages', en.every((key) => STRINGS.en[key]
 check('key count', en.length > 0, String(en.length));
 
 // The client copy is generated; a stale block means someone edited one side.
+// Compare LF-normalized text so a CRLF checkout does not look stale.
 const path = new URL('../lib/client.js', import.meta.url);
-const text = readFileSync(path, 'utf8');
+const text = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
 const begin = '    // >>> STRINGS (generated from lib/strings.js by tools/sync-strings.mjs) >>>';
 const end = '    // <<< STRINGS <<<';
 const from = text.indexOf(begin);

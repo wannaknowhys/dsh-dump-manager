@@ -5,7 +5,9 @@ import { readFileSync, writeFileSync } from 'node:fs';
 import { STRINGS } from '../lib/strings.js';
 
 const path = new URL('../lib/client.js', import.meta.url);
-const text = readFileSync(path, 'utf8');
+// Normalize before splicing: a Windows checkout may have CRLF line endings, and
+// the generated block is always LF.
+const text = readFileSync(path, 'utf8').replace(/\r\n/g, '\n');
 
 const begin = '    // >>> STRINGS (generated from lib/strings.js by tools/sync-strings.mjs) >>>';
 const end = '    // <<< STRINGS <<<';
