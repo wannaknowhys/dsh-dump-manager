@@ -138,6 +138,11 @@ import 它（纯脚本、无打包器），因此 `tools/sync-strings.mjs` 重�
 `responses.jsonl`。未知字段会被忽略，因此更新的 llm-dump 可以新增字段而不破坏
 本读取方。格式本身记录在 llm-dump 的 README 中。
 
+启动时以及每次请求 overview 时，Host 半边会解析 `dsh-llm-dump/package.json`，
+把它的 `dsh.formatVersion` 与本构建能读的范围（`1`）比较。对方更新时会在 Host
+日志里提示一次，并在面板顶部显示一条警告；不会阻止读取。`DSH_LLM_DUMP_PACKAGE`
+可以让检查指向另一份该文件，用于并排安装。
+
 ## Host 路由（仅 loopback）
 
 | 方法 | 路径 | Body / query |
@@ -167,6 +172,7 @@ npm test
 profile：
 
 - `tools/check-strings.mjs` —— 两份字符串副本同步且完整。
+- `test/smoke-compat.mjs` —— 启动警告、`/overview` 里的兼容信息，以及纯比较函数。
 - `test/smoke-latest.mjs` —— 导出本轮：筛选、fork 拒绝、偏好、抓取配置、目录
   根列表。
 - `test/smoke-tail.mjs` —— tail entry：从 `responses.jsonl` 标记、两种语言的

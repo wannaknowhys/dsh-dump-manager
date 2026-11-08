@@ -154,6 +154,13 @@ deduplication, and `responses.jsonl` for the reply to the newest request.
 Unknown fields are ignored, so a newer llm-dump may add fields without breaking
 this reader. The format itself is documented in the llm-dump README.
 
+At startup, and again on every overview request, the host side resolves
+`dsh-llm-dump/package.json` and compares its `dsh.formatVersion` with the range
+this build reads (`1`). A newer writer is reported once in the Host log and as a
+warning row at the top of the panel; reading is never blocked.
+`DSH_LLM_DUMP_PACKAGE` points the check at another copy of that file, for a
+side-by-side install.
+
 ## Host routes (loopback only)
 
 | Method | Path | Body / query |
@@ -183,6 +190,8 @@ Runs on synthetic folded dumps in a throwaway `DSH_HOME` under the system temp
 directory; the real profile is never touched:
 
 - `tools/check-strings.mjs` — both string copies are in sync and complete.
+- `test/smoke-compat.mjs` — the startup warning, the compatibility block in
+  `/overview`, and the pure version comparison.
 - `test/smoke-latest.mjs` — newest-turn export: filters, fork refusal, prefs,
   capture config, directory roots.
 - `test/smoke-tail.mjs` — the tail entry: flagged from `responses.jsonl`,
