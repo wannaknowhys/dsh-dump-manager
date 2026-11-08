@@ -1,0 +1,7 @@
+# dsh-dump-manager
+#
+# Host row serving the dump index and delete routes, plus the client entry that
+# renders the sidebar card and its management panel.
+- insert:
+    - id: dump-manager
+      name: 'dsh-dump-manager'

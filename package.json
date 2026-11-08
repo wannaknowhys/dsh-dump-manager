@@ -1,0 +1,46 @@
+{
+  "name": "dsh-dump-manager",
+  "version": "0.1.0",
+  "description": "Sidebar entry and management panel for captured LLM request dumps",
+  "type": "module",
+  "license": "MIT",
+  "author": "wannaknowhys",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/wannaknowhys/dsh-dump-manager.git"
+  },
+  "homepage": "https://github.com/wannaknowhys/dsh-dump-manager#readme",
+  "bugs": {
+    "url": "https://github.com/wannaknowhys/dsh-dump-manager/issues"
+  },
+  "main": "lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib/index.js",
+    "lib/client.js",
+    "lib/strings.js",
+    "cordis.patch.yml",
+    "README.md",
+    "README.zh-CN.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node tools/check-strings.mjs && node test/smoke-latest.mjs && node test/smoke-tail.mjs",
+    "sync-strings": "node tools/sync-strings.mjs"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": ["@deepseek-ai/dsh-client-ui-sidebar", "@deepseek-ai/dsh-client-ui-primitives"]
+    }
+  }
+}
