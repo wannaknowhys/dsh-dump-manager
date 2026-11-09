@@ -8,16 +8,19 @@ newest-turn export and its `LLM Dump` conversation tab, for dumps captured by
 
 ## Install / remove
 
-```powershell
-# install: point the plugin manager at this directory
-plugin_manager install_bundle target = <path to this directory>
+```sh
+# from npm
+dsh plugin --profile desktop add dsh-dump-manager
 
-# or from the CLI
-dsh plugin --profile <profile> add link:<path to this directory>
+# from a checkout
+dsh plugin --profile desktop add github:wannaknowhys/dsh-dump-manager
 
 # remove
-dsh plugin --profile <profile> remove dsh-dump-manager
+dsh plugin --profile desktop remove dsh-dump-manager
 ```
+
+The plugin manager accepts the same specs: `install_bundle target = dsh-dump-manager`
+or the checkout directory.
 
 The bundle has a host half (routes, exports) and a browser half (sidebar card,
 panel, tab, settings page). Host modules do not hot-reload: after editing one,

@@ -8,16 +8,18 @@
 
 ## 安装 / 移除
 
-```powershell
-# 安装：让插件管理器指向本目录
-plugin_manager install_bundle target = <本目录路径>
+```sh
+# 从 npm
+dsh plugin --profile desktop add dsh-dump-manager
 
-# 或使用 CLI
-dsh plugin --profile <profile> add link:<本目录路径>
+# 从源码
+dsh plugin --profile desktop add github:wannaknowhys/dsh-dump-manager
 
 # 移除
-dsh plugin --profile <profile> remove dsh-dump-manager
+dsh plugin --profile desktop remove dsh-dump-manager
 ```
+
+插件管理器接受同样的目标：`install_bundle target = dsh-dump-manager` 或本目录路径。
 
 本 bundle 有 Host 半边（路由、导出）和浏览器半边（侧边栏卡片、面板、标签页、
 设置页）。Host 模块不会热重载：修改后切换一次 bundle，让 Host 重新导入模块。
