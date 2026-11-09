@@ -29,6 +29,16 @@
     "README.zh-CN.md",
     "LICENSE"
   ],
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "llm",
+    "debug"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
   "scripts": {
     "test": "node tools/check-strings.mjs && node test/smoke-client.mjs && node test/smoke-compat.mjs && node test/smoke-latest.mjs && node test/smoke-tail.mjs",
     "sync-strings": "node tools/sync-strings.mjs"
