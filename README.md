@@ -2,6 +2,8 @@
 
 # dsh-dump-manager
 
+[![npm version](https://img.shields.io/npm/v/dsh-dump-manager.svg)](https://www.npmjs.com/package/dsh-dump-manager) [![license](https://img.shields.io/npm/l/dsh-dump-manager.svg)](./LICENSE)
+
 Sidebar entry, session table, the entry-stream viewer with two exports, plus the
 newest-turn export and its `LLM Dump` conversation tab, for dumps captured by
 [dsh-llm-dump](https://github.com/wannaknowhys/dsh-llm-dump).

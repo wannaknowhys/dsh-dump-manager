@@ -2,6 +2,8 @@
 
 # dsh-dump-manager
 
+[![npm version](https://img.shields.io/npm/v/dsh-dump-manager.svg)](https://www.npmjs.com/package/dsh-dump-manager) [![license](https://img.shields.io/npm/l/dsh-dump-manager.svg)](./LICENSE)
+
 为 [dsh-llm-dump](https://github.com/wannaknowhys/dsh-llm-dump) 抓取的 dump
 提供：侧边栏入口、session 列表、entry 流查看器与两种导出，以及“导出本轮”和它在
 对话区里的 `LLM Dump` 标签页。
